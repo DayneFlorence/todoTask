@@ -1,14 +1,4 @@
 
-//add item function
-  
-//   $('.add-Item').on('submit',function(event){
-//     event.preventDefault();
-  
-//     let itemName = $(this).children('[name=name]').val();
-//     let cost = $(this).children('[name=cost]').val();
-//     console.log(itemName,cost);
-//   });
-  
   
 
 
@@ -21,6 +11,8 @@
     $("#totalCost").html(total);
   }
 
+
+
   const updateSum = function(){
     $(document).on('input', '.amount input', function (event) {
         var tr = $(this).parent().parent()[0];
@@ -30,7 +22,15 @@
         
         $(tr).children('.sum').html('$' + sum);
     
+        $('.btn.remove').on('click',function(event){
+            $(this).parent().parent().remove();
+            updateTotal();
+           
+        });
+
         updateTotal();
+
+        
         
           
       });
@@ -42,11 +42,28 @@
   
   $(document).ready(function () {
 
-    $('.btn.remove').on('click',function(event){
-        $(this).parent().parent().remove();
-       
-    });
+   
+    $('.new-item').on('submit', function (event) {
+        event.preventDefault();
+        var name = $(this).children('[name=name]').val();
+        var cost = $(this).children('[name=cost]').val();
+        
+    $('tbody').append( '<tr>'+
+                '<td class="item">' + name + '</td>' + 
+                '<td class="cost">$<span>' + cost + '</span></td>' + 
+                '<td class="amount"><input type="number"></td>' +
+                '<td class="sum">$--.--</td>' +
+                '<td class="btn-remove"><button class="btn remove">Remove</button></td>' + 
+                '</tr>'
+                );
 
-    updateSum();
-  
+                
+                $(this).children('[name=name]').val('');
+                $(this).children('[name=cost]').val('');
+                
+
+      });
+      updateSum();
+
+      
   })
