@@ -1,1 +1,1 @@
-First push to github
+Able to remove and add item whilst updating both sums and total cost
