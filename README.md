@@ -1,1 +1,1 @@
-Able to remove and add item whilst updating both sums and total cost
+added css styling
