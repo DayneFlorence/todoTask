@@ -1,1 +1,1 @@
-added css styling
+added border radius and box shadow
